@@ -1,19 +1,28 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react';
-import { Container, Group, Burger, useMantineColorScheme, Button , Drawer, Stack, Space} from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import {IconSun, IconMoon} from '@tabler/icons-react'
-import Link from 'next/link';
+import { useState, useEffect } from "react";
+import {
+  Container,
+  Group,
+  Burger,
+  useMantineColorScheme,
+  Button,
+  Drawer,
+  Stack,
+  Space,
+} from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import { IconSun, IconMoon } from "@tabler/icons-react";
+import Link from "next/link";
 
-import classes from './simpleMenu.module.css';
-import Logo from '../../logo';
+import classes from "./simpleMenu.module.css";
+import Logo from "../../logo";
 
 const links = [
-  { link: '/about', label: 'Hello' },
-  { link: '/pricing', label: 'Pricing' },
-  { link: '/learn', label: 'Learn' },
-  { link: '/community', label: 'Community' },
+  { link: "/", label: "Feature" },
+  { link: "/pricing", label: "Pricing" },
+  { link: "/learn", label: "Learn" },
+  { link: "/community", label: "Community" },
 ];
 
 export function HeaderSimple() {
@@ -23,11 +32,11 @@ export function HeaderSimple() {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true)
-  }, [])
+    setIsMounted(true);
+  }, []);
 
-  if(!isMounted){
-    return null
+  if (!isMounted) {
+    return null;
   }
 
   const items = links.map((link) => (
@@ -67,12 +76,12 @@ export function HeaderSimple() {
         </Button>
       </Group>
     );
-  }
+  };
 
   return (
     <header className={classes.header}>
       <Container size="md" className={classes.inner}>
-        <Link href={"/"}>
+        <Link href={"/"} className={classes.link}>
           <Logo />
         </Link>
 
@@ -85,7 +94,7 @@ export function HeaderSimple() {
         <Burger opened={opened} onClick={open} hiddenFrom="xs" size="sm" />
         <Drawer opened={opened} onClose={close} size={"sm"} position="right">
           <Logo />
-          <Space h={'lg'}/>
+          <Space h={"lg"} />
           <Stack>{items}</Stack>
         </Drawer>
       </Container>
